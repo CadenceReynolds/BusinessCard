@@ -8,10 +8,17 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Call
+import androidx.compose.material.icons.rounded.Email
+import androidx.compose.material.icons.rounded.Share
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -52,35 +59,39 @@ fun Card(name: String, modifier: Modifier = Modifier) {
         )
 
     ) {
-        NameInfo(modifier.align(alignment = Alignment.CenterHorizontally), Color.White)
-        Spacer(Modifier.height(30.dp))
+        Spacer(Modifier.height(40.dp))
+        NameInfo(modifier.align(alignment = Alignment.CenterHorizontally), Color.White, name)
+        Spacer(Modifier.height(80.dp))
         Contact(modifier.align(alignment = Alignment.CenterHorizontally), Color.White)
     }
 }
 
 @Composable
-fun NameInfo(modifier: Modifier, textColor: Color) {
-    Column() {
+fun NameInfo(modifier: Modifier, textColor: Color, name: String) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Image(
             painter = painterResource(id = R.drawable.android_logo),
             contentDescription = null,
             contentScale = ContentScale.Fit,
             modifier = modifier
-                .height(120.dp)
+                .height(45.dp)
                 .background(
                     color = Color.Black
                 )
         )
+
+
         Text(
-            text = "Cadence Reynolds",
-            fontSize = 20.sp,
+            text = name,
+            fontSize = 12.sp,
             modifier = modifier,
-            color = textColor
+            color = textColor,
         )
         Text(
-            text = "Ameture Coder and writer",
+            text = "Amateur Coder and writer",
+            fontSize = 8.sp,
             modifier = modifier,
-            color = textColor
+            color = Color.Green
         )
     }
 }
@@ -88,22 +99,50 @@ fun NameInfo(modifier: Modifier, textColor: Color) {
 @Composable
 fun Contact(modifier: Modifier, textColor: Color) {
     Column() {
-        Text(
-            text = "765-490-8902",
-            modifier = modifier,
-            color = textColor
-        )
-        Text(
-            text = "@IDon'tUseSocialMedia",
-            modifier = modifier,
-            color = textColor
-        )
-        Text(
-            text = "randomshit@gmail.com",
-            modifier = modifier,
-            color = textColor
-
-        )
+        Row {
+            Icon(
+                Icons.Rounded.Call,
+                contentDescription = null,
+                tint = Color.White
+            )
+            Spacer(Modifier.width(5.dp))
+            Text(
+                text = "765-490-8902",
+                modifier = modifier,
+                color = textColor,
+                fontSize = 10.sp,
+            )
+        }
+        Spacer(Modifier.height(5.dp))
+        Row {
+            Icon(
+                Icons.Rounded.Share,
+                contentDescription = null,
+                tint = Color.White,
+            )
+            Spacer(Modifier.width(5.dp))
+            Text(
+                text = "@IDon'tUseSocialMedia",
+                modifier = modifier,
+                color = textColor,
+                fontSize = 10.sp,
+            )
+        }
+        Spacer(Modifier.height(5.dp))
+        Row {
+            Icon(
+                Icons.Rounded.Email,
+                contentDescription = null,
+                tint = Color.White,
+            )
+            Spacer(Modifier.width(5.dp))
+            Text(
+                text = "randomshit@gmail.com",
+                modifier = modifier,
+                color = textColor,
+                fontSize = 10.sp,
+            )
+        }
     }
 }
 
@@ -111,6 +150,6 @@ fun Contact(modifier: Modifier, textColor: Color) {
 @Composable
 fun CardPreview() {
     BusinessCardTheme {
-        Card("Android")
+        Card("Cadence Reynolds")
     }
 }
