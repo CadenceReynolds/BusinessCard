@@ -6,15 +6,12 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -23,7 +20,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -37,7 +33,7 @@ class MainActivity : ComponentActivity() {
             BusinessCardTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Card(
-                        name = "Android",
+                        name = "Cadence Reynolds",
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
@@ -51,16 +47,19 @@ fun Card(name: String, modifier: Modifier = Modifier) {
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = modifier
+        modifier = modifier.background(
+            color = Color.Black
+        )
+
     ) {
-        NameInfo(modifier.align(alignment = Alignment.CenterHorizontally))
-        Spacer(Modifier.height(20.dp))
-        Contact(modifier.align(alignment = Alignment.CenterHorizontally))
+        NameInfo(modifier.align(alignment = Alignment.CenterHorizontally), Color.White)
+        Spacer(Modifier.height(30.dp))
+        Contact(modifier.align(alignment = Alignment.CenterHorizontally), Color.White)
     }
 }
 
 @Composable
-fun NameInfo(modifier: Modifier) {
+fun NameInfo(modifier: Modifier, textColor: Color) {
     Column() {
         Image(
             painter = painterResource(id = R.drawable.android_logo),
@@ -73,31 +72,36 @@ fun NameInfo(modifier: Modifier) {
                 )
         )
         Text(
-            text = "Mr. Armstrong",
+            text = "Cadence Reynolds",
             fontSize = 20.sp,
-            modifier = modifier
+            modifier = modifier,
+            color = textColor
         )
         Text(
-            text = "Computer Science Program Lead",
-            modifier = modifier
+            text = "Ameture Coder and writer",
+            modifier = modifier,
+            color = textColor
         )
     }
 }
 
 @Composable
-fun Contact(modifier: Modifier) {
+fun Contact(modifier: Modifier, textColor: Color) {
     Column() {
         Text(
-            text = "+00 (00) 000 0000",
-            modifier = modifier
+            text = "765-490-8902",
+            modifier = modifier,
+            color = textColor
         )
         Text(
-            text = "@socialmediahandle",
-            modifier = modifier
+            text = "@IDon'tUseSocialMedia",
+            modifier = modifier,
+            color = textColor
         )
         Text(
-            text = "email@domain.com",
-            modifier = modifier
+            text = "randomshit@gmail.com",
+            modifier = modifier,
+            color = textColor
 
         )
     }
